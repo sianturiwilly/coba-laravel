@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2022 at 10:43 AM
+-- Generation Time: Oct 17, 2022 at 05:02 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `wpu_blog`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 'Programming', 'programming', '2022-10-17 06:48:34', '2022-10-17 06:48:34'),
+(2, 'Web Design', 'web-design', '2022-10-17 06:56:36', '2022-10-17 06:56:36'),
+(3, 'Football', 'football', '2022-10-17 07:02:34', '2022-10-17 07:02:34');
 
 -- --------------------------------------------------------
 
@@ -58,7 +81,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(5, '2022_10_17_072417_create_posts_table', 1);
+(5, '2022_10_17_072417_create_posts_table', 1),
+(6, '2022_10_17_133954_create_categories_table', 1);
 
 -- --------------------------------------------------------
 
@@ -98,6 +122,7 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `posts` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` bigint(20) UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `excerpt` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -111,10 +136,10 @@ CREATE TABLE `posts` (
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`id`, `title`, `slug`, `excerpt`, `body`, `published_at`, `created_at`, `updated_at`) VALUES
-(1, 'Judul Pertama', 'judul-pertama', 'Kutipan pertama', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad in quae voluptate nihil veniam quia eveniet eaque quo, vitae quisquam eos at porro suscipit cumque commodi explicabo impedit sequi, illum qui!</p><p>Recusandae doloremque consectetur possimus, quaerat eos debitis vitae provident error alias, velit, quos numquam eius sequi iusto ducimus doloribus ipsa esse eligendi. Beatae doloribus vero animi adipisci in officia et ut consequatur distinctio nam aperiam consequuntur sit quasi quibusdam iste dolores atque natus, necessitatibus deserunt delectus non fugiat id?</p><p>Eius quod molestias id perspiciatis accusamus sed totam numquam rem magni? Natus sunt ipsam facilis. At quasi amet expedita sit provident placeat, inventore ipsa veritatis reprehenderit nihil blanditiis non tempore rerum asperiores quas, neque similique mollitia nam delectus maiores atque distinctio laboriosam hic eius! Nostrum minus beatae in, fugit doloribus saepe porro quos totam aut! Ad rem, quam sed maiores consectetur debitis sint voluptatibus mollitia laboriosam hic recusandae esse harum?</p>', NULL, '2022-10-17 01:36:50', '2022-10-17 01:36:50'),
-(2, 'Judul Kedua', 'judul-kedua', 'Kutipan kedua', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad in quae voluptate nihil veniam quia eveniet eaque quo, vitae quisquam eos at porro suscipit cumque commodi explicabo impedit sequi, illum qui!</p><p>Recusandae doloremque consectetur possimus, quaerat eos debitis vitae provident error alias, velit, quos numquam eius sequi iusto ducimus doloribus ipsa esse eligendi. Beatae doloribus vero animi adipisci in officia et ut consequatur distinctio nam aperiam consequuntur sit quasi quibusdam iste dolores atque natus, necessitatibus deserunt delectus non fugiat id?</p><p>Eius quod molestias id perspiciatis accusamus sed totam numquam rem magni? Natus sunt ipsam facilis. At quasi amet expedita sit provident placeat, inventore ipsa veritatis reprehenderit nihil blanditiis non tempore rerum asperiores quas, neque similique mollitia nam delectus maiores atque distinctio laboriosam hic eius! Nostrum minus beatae in, fugit doloribus saepe porro quos totam aut! Ad rem, quam sed maiores consectetur debitis sint voluptatibus mollitia laboriosam hic recusandae esse harum?</p>', NULL, '2022-10-17 01:37:24', '2022-10-17 01:37:24'),
-(3, 'Judul Ketiga', 'judul-ketiga', 'Kutipan ketiga', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad in quae voluptate nihil veniam quia eveniet eaque quo, vitae quisquam eos at porro suscipit cumque commodi explicabo impedit sequi, illum qui!</p><p>Recusandae doloremque consectetur possimus, quaerat eos debitis vitae provident error alias, velit, quos numquam eius sequi iusto ducimus doloribus ipsa esse eligendi. Beatae doloribus vero animi adipisci in officia et ut consequatur distinctio nam aperiam consequuntur sit quasi quibusdam iste dolores atque natus, necessitatibus deserunt delectus non fugiat id?</p><p>Eius quod molestias id perspiciatis accusamus sed totam numquam rem magni? Natus sunt ipsam facilis. At quasi amet expedita sit provident placeat, inventore ipsa veritatis reprehenderit nihil blanditiis non tempore rerum asperiores quas, neque similique mollitia nam delectus maiores atque distinctio laboriosam hic eius! Nostrum minus beatae in, fugit doloribus saepe porro quos totam aut! Ad rem, quam sed maiores consectetur debitis sint voluptatibus mollitia laboriosam hic recusandae esse harum?</p>', NULL, '2022-10-17 01:37:49', '2022-10-17 01:37:49');
+INSERT INTO `posts` (`id`, `category_id`, `title`, `slug`, `excerpt`, `body`, `published_at`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Judul Pertama', 'judul-pertama', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur molestias, ullam magni saepe quasi animi sapiente nam a fuga numquam quo excepturi, at eaque est quis optio rem ipsa mollitia necessitatibus quae? Iure eius totam illum distinctio, in itaque excepturi optio nihil voluptatibus sunt!</p><p>Eum vel tenetur, accusantium iste reiciendis nesciunt quo a magni consequatur officiis, molestiae architecto et delectus quam nam voluptas similique alias? Iusto asperiores consequuntur sint beatae nam voluptatum, qui et dolore illum, tenetur nisi vel inventore adipisci? Cupiditate deleniti corporis eveniet voluptate sequi animi possimus repellat distinctio odit, voluptatem laboriosam necessitatibus tempora, quis temporibus iusto aliquid.</p>', NULL, '2022-10-17 07:15:28', '2022-10-17 07:15:28'),
+(2, 3, 'Judul Kedua', 'judul-kedua', 'The Spaniard became only the 11th Red - and second goalkeeper - to hit the landmark during Sundays 0-0 draw with Newcastle United at Old Trafford.', '<p>The Spaniard became only the 11th Red - and second goalkeeper - to hit the landmark during Sundays 0-0 draw with Newcastle United at Old Trafford.</p><p></p>But rather than looking back on his stellar career with the club so far, our no.1 is focused on the future and he hopes to be part of an improving and reinvigorated team which can challenge for silverware as soon as possible.</p>', NULL, '2022-10-17 07:15:39', '2022-10-17 07:15:39'),
+(3, 2, 'Judul Ketiga', 'judul-ketiga', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur molestias, ullam magni saepe quasi animi sapiente nam a fuga numquam quo excepturi, at eaque est quis optio rem ipsa mollitia necessitatibus quae? Iure eius totam illum distinctio, in itaque excepturi optio nihil voluptatibus sunt!</p><p>Eum vel tenetur, accusantium iste reiciendis nesciunt quo a magni consequatur officiis, molestiae architecto et delectus quam nam voluptas similique alias? Iusto asperiores consequuntur sint beatae nam voluptatum, qui et dolore illum, tenetur nisi vel inventore adipisci? Cupiditate deleniti corporis eveniet voluptate sequi animi possimus repellat distinctio odit, voluptatem laboriosam necessitatibus tempora, quis temporibus iusto aliquid.</p>', NULL, '2022-10-17 07:15:50', '2022-10-17 07:15:50');
 
 -- --------------------------------------------------------
 
@@ -136,6 +161,14 @@ CREATE TABLE `users` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `categories_name_unique` (`name`),
+  ADD UNIQUE KEY `categories_slug_unique` (`slug`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -183,6 +216,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -192,7 +231,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
