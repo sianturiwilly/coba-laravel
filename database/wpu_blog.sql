@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2022 at 05:02 PM
+-- Generation Time: Oct 17, 2022 at 06:15 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -40,9 +40,8 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'Programming', 'programming', '2022-10-17 06:48:34', '2022-10-17 06:48:34'),
-(2, 'Web Design', 'web-design', '2022-10-17 06:56:36', '2022-10-17 06:56:36'),
-(3, 'Football', 'football', '2022-10-17 07:02:34', '2022-10-17 07:02:34');
+(1, 'Web Programming', 'web-programming', '2022-10-17 09:11:19', '2022-10-17 09:11:19'),
+(2, 'Personal', 'personal', '2022-10-17 09:11:19', '2022-10-17 09:11:19');
 
 -- --------------------------------------------------------
 
@@ -123,6 +122,7 @@ CREATE TABLE `personal_access_tokens` (
 CREATE TABLE `posts` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `category_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `excerpt` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -136,10 +136,11 @@ CREATE TABLE `posts` (
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`id`, `category_id`, `title`, `slug`, `excerpt`, `body`, `published_at`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Judul Pertama', 'judul-pertama', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur molestias, ullam magni saepe quasi animi sapiente nam a fuga numquam quo excepturi, at eaque est quis optio rem ipsa mollitia necessitatibus quae? Iure eius totam illum distinctio, in itaque excepturi optio nihil voluptatibus sunt!</p><p>Eum vel tenetur, accusantium iste reiciendis nesciunt quo a magni consequatur officiis, molestiae architecto et delectus quam nam voluptas similique alias? Iusto asperiores consequuntur sint beatae nam voluptatum, qui et dolore illum, tenetur nisi vel inventore adipisci? Cupiditate deleniti corporis eveniet voluptate sequi animi possimus repellat distinctio odit, voluptatem laboriosam necessitatibus tempora, quis temporibus iusto aliquid.</p>', NULL, '2022-10-17 07:15:28', '2022-10-17 07:15:28'),
-(2, 3, 'Judul Kedua', 'judul-kedua', 'The Spaniard became only the 11th Red - and second goalkeeper - to hit the landmark during Sundays 0-0 draw with Newcastle United at Old Trafford.', '<p>The Spaniard became only the 11th Red - and second goalkeeper - to hit the landmark during Sundays 0-0 draw with Newcastle United at Old Trafford.</p><p></p>But rather than looking back on his stellar career with the club so far, our no.1 is focused on the future and he hopes to be part of an improving and reinvigorated team which can challenge for silverware as soon as possible.</p>', NULL, '2022-10-17 07:15:39', '2022-10-17 07:15:39'),
-(3, 2, 'Judul Ketiga', 'judul-ketiga', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur molestias, ullam magni saepe quasi animi sapiente nam a fuga numquam quo excepturi, at eaque est quis optio rem ipsa mollitia necessitatibus quae? Iure eius totam illum distinctio, in itaque excepturi optio nihil voluptatibus sunt!</p><p>Eum vel tenetur, accusantium iste reiciendis nesciunt quo a magni consequatur officiis, molestiae architecto et delectus quam nam voluptas similique alias? Iusto asperiores consequuntur sint beatae nam voluptatum, qui et dolore illum, tenetur nisi vel inventore adipisci? Cupiditate deleniti corporis eveniet voluptate sequi animi possimus repellat distinctio odit, voluptatem laboriosam necessitatibus tempora, quis temporibus iusto aliquid.</p>', NULL, '2022-10-17 07:15:50', '2022-10-17 07:15:50');
+INSERT INTO `posts` (`id`, `category_id`, `user_id`, `title`, `slug`, `excerpt`, `body`, `published_at`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 'Judul Pertama', 'judul-pertama', 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero veniam, earum repellendus hic ab quasi vel soluta autem natus exercitationem eveniet itaque excepturi dolore, facilis nesciunt ipsa sit est! Magni similique provident id, beatae asperiores sed eius, consectetur vitae non vero libero tenetur dicta cum ut sapiente, deleniti sit culpa doloribus accusantium enim dolores fugiat quidem! Exercitationem officiis voluptas quae labore sint accusamus reiciendis accusantium esse, vitae sequi voluptatem aut voluptatibus magnam necessitatibus perspiciatis ducimus error aspernatur cupiditate perferendis ipsa fugiat odio eligendi quas eius. Velit, omnis aliquam ducimus veniam, quo ipsam illum, inventore ut consequatur qui iure! Deserunt, dignissimos?', NULL, '2022-10-17 09:11:19', '2022-10-17 09:11:19'),
+(2, 1, 1, 'Judul Kedua', 'judul-kedua', 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero veniam, earum repellendus hic ab quasi vel soluta autem natus exercitationem eveniet itaque excepturi dolore, facilis nesciunt ipsa sit est! Magni similique provident id, beatae asperiores sed eius, consectetur vitae non vero libero tenetur dicta cum ut sapiente, deleniti sit culpa doloribus accusantium enim dolores fugiat quidem! Exercitationem officiis voluptas quae labore sint accusamus reiciendis accusantium esse, vitae sequi voluptatem aut voluptatibus magnam necessitatibus perspiciatis ducimus error aspernatur cupiditate perferendis ipsa fugiat odio eligendi quas eius. Velit, omnis aliquam ducimus veniam, quo ipsam illum, inventore ut consequatur qui iure! Deserunt, dignissimos?', NULL, '2022-10-17 09:11:20', '2022-10-17 09:11:20'),
+(3, 2, 1, 'Judul Ketiga', 'judul-ketiga', 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero veniam, earum repellendus hic ab quasi vel soluta autem natus exercitationem eveniet itaque excepturi dolore, facilis nesciunt ipsa sit est! Magni similique provident id, beatae asperiores sed eius, consectetur vitae non vero libero tenetur dicta cum ut sapiente, deleniti sit culpa doloribus accusantium enim dolores fugiat quidem! Exercitationem officiis voluptas quae labore sint accusamus reiciendis accusantium esse, vitae sequi voluptatem aut voluptatibus magnam necessitatibus perspiciatis ducimus error aspernatur cupiditate perferendis ipsa fugiat odio eligendi quas eius. Velit, omnis aliquam ducimus veniam, quo ipsam illum, inventore ut consequatur qui iure! Deserunt, dignissimos?', NULL, '2022-10-17 09:11:20', '2022-10-17 09:11:20'),
+(4, 2, 2, 'Judul Keempat', 'judul-keempat', 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero veniam, earum repellendus hic ab quasi vel soluta autem natus exercitationem eveniet itaque excepturi dolore, facilis nesciunt ipsa sit est! Magni similique provident id, beatae asperiores sed eius, consectetur vitae non vero libero tenetur dicta cum ut sapiente, deleniti sit culpa doloribus accusantium enim dolores fugiat quidem! Exercitationem officiis voluptas quae labore sint accusamus reiciendis accusantium esse, vitae sequi voluptatem aut voluptatibus magnam necessitatibus perspiciatis ducimus error aspernatur cupiditate perferendis ipsa fugiat odio eligendi quas eius. Velit, omnis aliquam ducimus veniam, quo ipsam illum, inventore ut consequatur qui iure! Deserunt, dignissimos?', NULL, '2022-10-17 09:11:20', '2022-10-17 09:11:20');
 
 -- --------------------------------------------------------
 
@@ -157,6 +158,14 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Willi Sianturi', 'prajudiwilliam10@gmail.com', '$2y$10$jatkUJuangrzrK6kJSRv9.0ZjcvqW3bDI7wQsEH5f4NJUYQvl2e.y', NULL, NULL, '2022-10-17 09:11:19', '2022-10-17 09:11:19'),
+(2, 'Darwis Purba', 'darwispurba93@gmail.com', '$2y$10$fS3baMMQqdg3jtMSGX2iLON8k8Oxs15tAEyQrKhYU.E.OuCFCDFlG', NULL, NULL, '2022-10-17 09:11:19', '2022-10-17 09:11:19');
 
 --
 -- Indexes for dumped tables
@@ -219,7 +228,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -243,13 +252,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
