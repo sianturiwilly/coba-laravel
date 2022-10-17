@@ -1,15 +1,8 @@
 @extends('layouts.main')
 
 @section('container')
-
-    @foreach($posts as $post)
-        <article class="mb-3">
-            <h2>
-                <a href="/posts/{{ $post["slug"] }}">{{ $post["title"] }}</a>
-            </h2>
-            <h5>By: {{ $post["author"] }}</h5>
-            <p>{{ $post["body"] }}</p>
-        </article>
-    @endforeach
-
+    <h1>Halaman About</h1>
+    <h3>{{ $name }}</h3>
+    <p>{{ $email }}</p>
+    <img src="img/{{ $image }}" alt="{{ $name }}" width="200" class="img-thumbnail rounded-circle">
 @endsection
