@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2022 at 04:42 AM
+-- Generation Time: Oct 27, 2022 at 05:49 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -82,7 +82,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (5, '2022_10_17_072417_create_posts_table', 1),
-(6, '2022_10_17_133954_create_categories_table', 1);
+(6, '2022_10_17_133954_create_categories_table', 1),
+(7, '2022_10_27_104100_add_is_admin_to_users_table', 2);
 
 -- --------------------------------------------------------
 
@@ -175,18 +176,19 @@ CREATE TABLE `users` (
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `is_admin` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Willi Sianturi', 'willisianturi', 'prajudiwilliam10@gmail.com', '$2y$10$42U6JtbAZibyvcAn1dvrr.3M1I3669ead9wj9lhyaX8pThOvisoDy', NULL, NULL, '2022-10-22 08:19:18', '2022-10-22 08:19:18'),
-(2, 'Cahyanto Wasita', 'ika.riyanti', 'emin.anggriawan@example.net', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '2022-10-22 08:19:20', '9jzvPKO4CP', '2022-10-22 08:19:20', '2022-10-22 08:19:20'),
-(3, 'Rahayu Dian Rahmawati', 'yuliarti.prayitna', 'liman.novitasari@example.org', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '2022-10-22 08:19:20', 'NeKFC26Qmf', '2022-10-22 08:19:20', '2022-10-22 08:19:20'),
-(4, 'Galang Dabukke', 'kmangunsong', 'lintang15@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '2022-10-22 08:19:20', 'InbGR90upa', '2022-10-22 08:19:20', '2022-10-22 08:19:20');
+INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`, `is_admin`) VALUES
+(1, 'Willi Sianturi', 'willisianturi', 'prajudiwilliam10@gmail.com', '$2y$10$42U6JtbAZibyvcAn1dvrr.3M1I3669ead9wj9lhyaX8pThOvisoDy', NULL, NULL, '2022-10-22 08:19:18', '2022-10-22 08:19:18', 0),
+(2, 'Cahyanto Wasita', 'ika.riyanti', 'emin.anggriawan@example.net', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '2022-10-22 08:19:20', '9jzvPKO4CP', '2022-10-22 08:19:20', '2022-10-22 08:19:20', 0),
+(3, 'Rahayu Dian Rahmawati', 'yuliarti.prayitna', 'liman.novitasari@example.org', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '2022-10-22 08:19:20', 'NeKFC26Qmf', '2022-10-22 08:19:20', '2022-10-22 08:19:20', 0),
+(4, 'Galang Dabukke', 'kmangunsong', 'lintang15@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '2022-10-22 08:19:20', 'InbGR90upa', '2022-10-22 08:19:20', '2022-10-22 08:19:20', 0);
 
 --
 -- Indexes for dumped tables
@@ -262,7 +264,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
